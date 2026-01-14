@@ -1,30 +1,43 @@
 # PlanetTerp-Review-Classifier
-
-
 ## Overview
-This project builds an NLP pipeline to analyze professor reviews from PlanetTerp and predict sentiment and ratings using a fine-tuned transformer model. The goal is to assess how well textual sentiment aligns with numerical ratings provided by users.
+This project builds a transformer-based NLP model to predict professor star ratings from textual reviews collected from PlanetTerp. The goal is to evaluate how effectively sentiment and contextual cues in reviews map to numeric ratings.
 
-## Motivation
-Student reviews contain rich qualitative information that is not always captured by numeric ratings alone. This project explores whether modern transformer models can effectively learn sentiment signals and map them to rating scales.
+## Problem Statement
+Given a written professor review, can a fine-tuned transformer model accurately predict the reviewer’s star rating?
 
 ## Data Collection
-- Pulled professor reviews from PlanetTerp using a public API
-- Each review includes:
-  - Free-text feedback
-  - User-assigned numerical rating
+- Reviews pulled using the **PlanetTerp public API**
+- Dataset fields:
+  - Review text
+  - User-provided star rating
+- Professors selected to ensure sufficient review counts and reduce extreme class imbalance
 
-## Methodology
-1. **Data Preprocessing**
-   - Cleaned and structured review text
-   - Tokenized text using Hugging Face tokenizers
+## Modeling Approach
+### Preprocessing
+- Cleaned and structured review text
+- Tokenized inputs using Hugging Face tokenizers
 
-2. **Modeling**
-   - Fine-tuned a pretrained transformer model using PyTorch
-   - Trained the model to perform sentiment / rating classification
+### Model
+- Fine-tuned **DistilBERT** for multi-class classification
+- Trained using PyTorch and Hugging Face’s Trainer API
 
-3. **Evaluation**
-   - Compared model predictions against user-provided ratings
-   - Analyzed mismatches between textual sentiment and numeric scores
+### Experimentation
+- Iterated on:
+  - Dataset composition to improve class balance
+  - Learning rates (5e-5 → 1e-5)
+- Evaluated training and validation loss trends to detect overfitting
+
+## Evaluation
+- Performance assessed using:
+  - Validation loss
+  - F1 score
+  - Confusion matrix analysis
+- Model performed best on extreme ratings but struggled with **mid-range and mixed-sentiment reviews**
+
+## Error Analysis
+Misclassifications often occurred in:
+- Longer reviews with both positive and negative sentiments
+- Reviews where numeric ratings conflicted with textual tone
 
 ## Tools & Technologies
 - Python
@@ -32,8 +45,9 @@ Student reviews contain rich qualitative information that is not always captured
 - PyTorch
 - Hugging Face Transformers
 
-## Results
-The model demonstrated strong performance in capturing sentiment from review text, with observed gaps highlighting cases where written feedback and numeric ratings diverged.
+## Conclusion
+While the model demonstrated strong sentiment recognition, predicting nuanced mid-range ratings remains challenging. This highlights inherent limitations of sentiment-based rating prediction.
 
 ## Report
-A full technical report is included, detailing model architecture, training process, evaluation metrics, and limitations.
+A detailed technical report describing model architecture, training strategy, and evaluation results is included.
+
