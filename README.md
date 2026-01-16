@@ -86,11 +86,9 @@ Manual inspection of misclassifications examples revealed common failures modes 
 - Longer reviews where the final rating depended on nuance or emphasis
 - Reviews where numeric ratings conflicted with textual tone
 ### Example Misclassification
-`"OK these reviews are way too dramatic lmao. These kids get to college and learn the hard way you can't BS your way through like high school, then they blame the professor when they fail. Rainbolt is a really underrated professor. I had him for Orgo I. … His lectures were great... My only complaint about this guy is he definitely is a bit full of himself and gets irritated when students ask questions/come to office hours. He's very impatient when it comes to that kind of stuff and I didn't like that. Other then that great professor."  
+`"OK these reviews are way too dramatic lmao. These kids get to college and learn the hard way you can't BS your way through like high school, then they blame the professor when they fail. Rainbolt is a really underrated professor. I had him for Orgo I. … His lectures were great... My only complaint about this guy is he definitely is a bit full of himself and gets irritated when students ask questions/come to office hours. He's very impatient when it comes to that kind of stuff and I didn't like that. Other then that great professor."`  
 **Predicted**: 2  
 **True**: 5
-`
-
 ## Results & Observations
 * The model performed reasonably well with identifying extreme ratings
 * It struggled most with mid-range ratings (2-4)
