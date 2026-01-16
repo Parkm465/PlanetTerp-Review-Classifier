@@ -28,7 +28,7 @@ Professors were selected based on:
 * Total reviews: 920
 * Features
   * 'prompt': Review text
-  * 'label': Star rating (1-5)
+  * 'label': Star rating (1-5)  
 | **Rating** | **Count** | **Percentage** |
 |:---:|:---:|:---:|
 | 0 | 245 | 26.63% |
@@ -39,7 +39,7 @@ Professors were selected based on:
 The dataset is reasonably balanced, which makes it suitable for multi-class prediction without aggressive resampling
 
 ## Modeling Approach
-## Data Splitting
+### Data Splitting
 The data was split using stratified sampling to preserve class balance:
 * 70% Training
 * 15% Validaiton
